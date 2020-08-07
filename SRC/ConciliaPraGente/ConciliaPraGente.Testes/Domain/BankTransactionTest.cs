@@ -15,7 +15,7 @@ namespace ConciliaPraGente.Testes.Domain
            var date = DateTime.Today;
            const string description = "Transaction test description";
 
-           var transaction = new Transaction(description, date, value, transactionType);
+           var transaction = new BankTransaction(description, date, value, transactionType);
 
            Assert.AreEqual(transaction.Description, description);
            Assert.AreEqual(transaction.Date, date);
@@ -31,7 +31,7 @@ namespace ConciliaPraGente.Testes.Domain
             var date = DateTime.Today;
             const string description = "Transaction test description";
 
-            Assert.ThrowsException<Exception>(() => new Transaction(description, date, value, transactionType), "Invalid value for transaction");
+            Assert.ThrowsException<Exception>(() => new BankTransaction(description, date, value, transactionType), "Invalid value for transaction");
         }
 
         [TestMethod]
@@ -42,7 +42,7 @@ namespace ConciliaPraGente.Testes.Domain
             var date = DateTime.Today;
             const string description = "";
 
-            Assert.ThrowsException<Exception>(() => new Transaction(description, date, value, transactionType), "Invalid description for transaction");
+            Assert.ThrowsException<Exception>(() => new BankTransaction(description, date, value, transactionType), "Invalid description for transaction");
         }
 
         [TestMethod]
@@ -53,7 +53,7 @@ namespace ConciliaPraGente.Testes.Domain
             var date = DateTime.Today.AddMonths(5);
             const string description = "Transaction test description";
 
-            Assert.ThrowsException<Exception>(() => new Transaction(description, date, value, transactionType), "Transaction should not be in the future");
+            Assert.ThrowsException<Exception>(() => new BankTransaction(description, date, value, transactionType), "Transaction should not be in the future");
         }
     }
 }

@@ -213,7 +213,6 @@
     <Compile Include="Application\BankTransactionViewModelEqualityComparer.cs" />
     <Compile Include="Domain\IBankTransactionFactory.cs" />
     <Compile Include="Domain\IBankTransactionRepository.cs" />
-    <Compile Include="Domain\Transaction.cs" />
     <Compile Include="Domain\BankTransactionFactory.cs" />
     <Compile Include="Domain\BankTransactionsFileToTextConverter.cs" />
     <Compile Include="Domain\TransactionType.cs" />
