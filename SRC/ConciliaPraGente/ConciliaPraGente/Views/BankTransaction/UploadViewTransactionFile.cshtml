@@ -1,0 +1,101 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ Html.RenderPartial("_ConfirmationModal"); }
+
+<div class="row justify-content-end mt-3">
+    <p class="font-italic">@Html.ActionLink("Listar transações", "Index", "BankTransaction") | Adicionar transações</p>
+</div>
+
+@{ Html.RenderPartial("_Messages"); }
+@if (ViewBag.ErrorMessage != null)
+{
+    <div id="errorMessageWrapper" class="alert alert-danger" role="alert">
+        <span id="errorMessage">@ViewBag.ErrorMessage</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<div class="row mt-3 mb-4">
+    @using (Html.BeginForm("Upload", "BankTransaction", FormMethod.Post, new { enctype = "multipart/form-data", @class="row" }))
+    {
+        <div class="col-6">
+            <h3>Importe aqui seus arquivos .OFX</h3>
+            <input type="file" multiple name="fileInput" id="fileInput" />
+            <br />
+        </div>
+        <div class="col-6 align-self-end">
+            <button type="submit" class="btn btn-primary">Fazer upload!</button>
+        </div>
+    }
+</div>
+<div class="row mt-5">
+    @if (ViewBag.TotalTransactions > 0)
+    {
+        <div class="row">
+            <div class="col">
+                <h2>Transações identificadas para serem salvas</h2>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-10">
+                <p class="font-italic">Foram identificadas <strong>@ViewBag.TotalTransactions </strong> transações no(s) arquivo(s).</p>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#uploadConfirmation">Salvar transações</button>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Data da transação</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Tipo de transação</th>
+                </tr>
+
+                <tr>
+                    <td scope="col">
+                        <input type="text" class="form-control" id="descriptionFilter" />
+                    </td>
+                    <td scope="col">
+                    </td>
+                    <td scope="col">
+                        <input type="text" class="form-control" id="valueFilter" />
+                    </td>
+                    <td scope="col">
+                        <select id="typeFilter" class="form-control">
+                            <option selected="" value="AMBOS">AMBOS</option>
+                            <option value="DÉBITO">DÉBITO</option>
+                            <option value="CRÉDITO">CRÉDITO</option>
+                        </select>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var bankTransaction in ViewBag.BankTransactions)
+                {
+                    <tr class="dataLine">
+                        <th scope="row">@bankTransaction.Description</th>
+                        <td>@bankTransaction.Date</td>
+                        <td>@bankTransaction.Value</td>
+                        <td class="@( bankTransaction.Type == "DÉBITO" ? "text-danger" : "text-success")"><strong>@bankTransaction.Type</strong></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="row justify-content-end mt-5">
+            <div class="col-2">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#uploadConfirmation">
+                    Salvar transações
+                </button>
+            </div>
+        </div>
+    }
+
+    @Scripts.Render("~/bundles/custom/transactionFileUploader")
+    @Scripts.Render("~/bundles/custom/transactionListFilter")
+</div>

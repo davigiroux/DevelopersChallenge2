@@ -1,0 +1,18 @@
+﻿<div class="jumbotron">
+    <h1>Olá, <span style="color: #7952b3">Xayah</span>! </h1>
+    <p class="lead">
+        Fiquei sabendo que você precisa de um ajuda com seus arquivos bancários.
+        Vou tentar te ajudar e não deixar esse processo <strong>penoso</strong>(desculpa) pra você!
+    </p>
+    <p>
+        Você pode começar adicionando seus arquivos .OFX ou vendo suas transações já salvas!
+    </p>
+    <div class="row mt-5">
+        <div class="col-6 text-center">
+            @Html.ActionLink("Quero ver as transações salvas!", "Index", "BankTransaction", new {}, new {@class= "btn btn-lg btn-info" })
+        </div>
+        <div class="col-6 text-center">
+            @Html.ActionLink("Adicionar meus arquivos .OFX!", "UploadBankTransactionFile", "BankTransaction", new { }, new { @class = "btn btn-lg btn-info" })
+        </div>
+    </div>
+</div>

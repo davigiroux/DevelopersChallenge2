@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConciliaPraGente", "ConciliaPraGente\ConciliaPraGente.csproj", "{CE55B9EC-E13C-44B6-8E70-7B66416D82A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConciliaPraGente.Testes", "ConciliaPraGente.Testes\ConciliaPraGente.Testes.csproj", "{2CA22A47-924A-4C93-BECF-0919F36957EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE55B9EC-E13C-44B6-8E70-7B66416D82A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE55B9EC-E13C-44B6-8E70-7B66416D82A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE55B9EC-E13C-44B6-8E70-7B66416D82A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE55B9EC-E13C-44B6-8E70-7B66416D82A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CA22A47-924A-4C93-BECF-0919F36957EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CA22A47-924A-4C93-BECF-0919F36957EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CA22A47-924A-4C93-BECF-0919F36957EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CA22A47-924A-4C93-BECF-0919F36957EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E74A3FD-B9F9-4C0E-9A2A-66D7658DAF77}
+	EndGlobalSection
+EndGlobal
