@@ -16,12 +16,12 @@ namespace ConciliaPraGente.Controllers
 {
     public class BankTransactionController : Controller
     {
-        private readonly BankTransactionManager _manager;
+        private readonly BankTransactionManager _bankTransactionManager;
         private readonly BankTransactionRepository _bankTransactionRepository;
 
         public BankTransactionController()
         {
-            _manager = new BankTransactionManager(new BankTransactionFactory(), new BankTransactionsFileToTextConverter(), new BankTransactionRepository());
+            _bankTransactionManager = new BankTransactionManager(new BankTransactionFactory(), new BankTransactionsFileToTextConverter(), new BankTransactionRepository());
             _bankTransactionRepository = new BankTransactionRepository();
         }
 
@@ -72,7 +72,7 @@ namespace ConciliaPraGente.Controllers
                 return View("UploadViewTransactionFile");
             }
 
-            var transactionList = _manager.ExtractBankTransactionsFromFiles(files);
+            var transactionList = _bankTransactionManager.ExtractBankTransactionsFromFiles(files);
             CreateBankTransactionViewModelList(transactionList);
 
             return View("UploadViewTransactionFile");
@@ -81,7 +81,7 @@ namespace ConciliaPraGente.Controllers
         [System.Web.Mvc.HttpPost]
         public JsonResult SaveBankTransactions(IEnumerable<BankTransactionViewModel> bankTransactions)
         {
-            _manager.AddBankTransactions(bankTransactions);
+            _bankTransactionManager.AddBankTransactions(bankTransactions);
 
             return Json(new
             {

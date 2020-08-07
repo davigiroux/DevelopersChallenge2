@@ -65,9 +65,13 @@ namespace ConciliaPraGente.Application
         private IEnumerable<BankTransaction> RemoveDuplicates(IEnumerable<BankTransactionViewModel> listOfViewModels, List<BankTransaction> bankTransactions)
         {
             var listWithoutDuplicates = listOfViewModels.Distinct(new BankTransactionViewModelEqualityComparer());
-            bankTransactions.AddRange(listWithoutDuplicates.Select(vm => _bankTransactionFactory.CreateBankTransactionWith(
-                vm.Description, vm.Date, vm.Value,
-                vm.Type)));
+            bankTransactions.AddRange(listWithoutDuplicates.Select(vm => 
+                _bankTransactionFactory.CreateBankTransactionWith(
+                vm.Description, 
+                vm.Date, 
+                vm.Value,
+                vm.Type))
+            );
 
             var addedBankTransactions = _bankTransactionRepository.GetAll();
 
